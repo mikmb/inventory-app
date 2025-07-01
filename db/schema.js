@@ -2,18 +2,15 @@ const pool = require("./pool");
 
 async function createTables() {
   try {
-    await pool.query(`DROP TABLE IF EXISTS items`);
-    await pool.query(`DROP TABLE IF EXISTS categories`);
-
     await pool.query(`
-      CREATE TABLE categories (
+      CREATE TABLE IF NOT EXISTS categories (
         id SERIAL PRIMARY KEY,
         name TEXT UNIQUE NOT NULL
       )
     `);
 
     await pool.query(`
-      CREATE TABLE items (
+      CREATE TABLE IF NOT EXISTS items (
         id SERIAL PRIMARY KEY,
         name TEXT NOT NULL,
         description TEXT,
