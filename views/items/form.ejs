@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= item ? "Edit" : "New" %> Item</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <h1><%= item ? "Edit" : "New" %> Item</h1>
+<form method="POST" action="<%= item ? `/items/${item.id}/edit` : '/items' %>" class="edit-form">
+    <label for="name">Name</label>
+  <input name="name" value="<%= item?.name || '' %>" placeholder="Item name" required />
+  <label for="description">Description</label>
+  <textarea name="description" class="description"><%= item?.description || '' %></textarea>
+  <label for="quantity">Quantity</label>
+  <input name="quantity" type="number" value="<%= item?.quantity || 0 %>" />
+  <label for="category">Category</label>
+  <select name="category_id">
+    <option value="">-- None --</option>
+    <% categories.forEach(c => { %>
+      <option value="<%= c.id %>" <%= c.id == item?.category_id ? "selected" : "" %>><%= c.name %></option>
+    <% }) %>
+  </select>
+  <button type="submit">Submit</button>
+</form>
+
+<div class="add-item-category-container"><a href="/items">Back to all items</a></div>
+</body>
+</html>
+

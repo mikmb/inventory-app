@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Category</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <h1><%= category ? "Edit" : "New" %> Category</h1>
+    <div class="add-item-category-container">
+      <a href="/items">Back to all items</a>
+      <a href="/categories">Back to all categories</a>
+    </div>
+    <form
+      method="POST"
+      action="<%= category ? `/categories/${category.id}/edit` : '/categories' %>"
+      class="category-form"
+    >
+      <input
+        name="name"
+        value="<%= category?.name || '' %>"
+        placeholder="Category name"
+        required
+      />
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>

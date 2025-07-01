@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Categories</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <h1>Categories</h1>
+    <div class="categories-list-container">
+      <a href="/categories/new" class="add-new-category">Add New Category</a>
+      <ul class="categoties-list">
+        <% categories.forEach(c => { %>
+        <li class="category">
+          <a href="/categories/<%= c.id %>"><%= c.name %></a>
+        </li>
+        <% }) %>
+      </ul>
+    </div>
+    <div class="add-item-category-container">
+      <a href="/items">Back to all items</a>
+    </div>
+  </body>
+</html>

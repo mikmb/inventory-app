@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= category.name %> Detail</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <h1>Categories</h1>
+    <div class="category-detail-container">
+      <p><%= category.name %></p>
+      <a href="/categories/<%= category.id %>/edit">Edit</a>
+      <form
+        action="/categories/<%= category.id %>/delete"
+        method="POST"
+        style="display: inline"
+      >
+        <button type="submit" onclick="return confirm('Are you sure?')">
+          Delete
+        </button>
+      </form>
+    </div>
+    <br /><br />
+
+    <div class="add-item-category-container">
+      <a href="/items/new" class="add-item">Add New Item</a>
+      <a href="/categories/new" class="add-category">Add New Category</a>
+    </div>
+  </body>
+</html>
